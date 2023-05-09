@@ -311,5 +311,138 @@ FROM employee
 *Всегда, когда мы хотим проверить поле на **NULL**, нам необходимо использовать ключевое слово IS:*
 
 ```postgresql
+SELECT first_name
+FROM employee
+WHERE company_id IS NULL;
+```
 
+## Объединение множеств. UNION
+
+*Оператор UNION используется для объединения результирующих наборов из 2 и более операторов
+SELECT. **Он удаляет повторяющиеся строки между различными операторами SELECT.***
+
+*Каждый оператор SELECT в операторе UNION должен иметь одинаковое количество полей в наборах результатов с одинаковыми
+типами данных.*
+
+Пример использования UNION:
+
+*Первое множество:*
+
+```postgresql
+SELECT first_name
+FROM employee
+WHERE company_id IS NOT NULL
+```
+
+![img_11.png](img_11.png)
+
+*Второе множество:*
+
+```postgresql
+SELECT first_name
+FROM employee
+WHERE salary IS NULL
+```
+
+![img_12.png](img_12.png)
+
+**Результат объединения UNION:**
+
+```postgresql
+SELECT first_name
+FROM employee
+WHERE company_id IS NOT NULL
+UNION
+SELECT first_name
+FROM employee
+WHERE salary IS NULL
+```
+
+![img_13.png](img_13.png)
+
+## Объединение множеств. UNION ALL
+
+*Оператор UNION ALL используется для объединения результирующих наборов из 2 и более операторов SELECT. Он возвращает
+все строки из запроса и не удаляет повторяющиеся строки между различными операторами SELECT.*
+
+*Каждый оператор SELECT в операторе UNION ALL должен иметь одинаковое количество полей в наборах результатов с
+одинаковыми типами данных.*
+
+```postgresql
+SELECT first_name
+FROM employee
+WHERE company_id IS NOT NULL
+UNION ALL
+SELECT first_name
+FROM employee
+WHERE salary IS NULL
+```
+
+**Результат объединения UNION ALL:**
+
+![img_14.png](img_14.png)
+
+## Подзапросы
+
+*Подзапросы (subquery) представляют собой такие запросы, которые могут быть встроены в другие запросы.*
+
+Примеры:
+
+```postgresql
+SELECT avg(empl.salary)
+FROM (SELECT *
+      FROM employee
+      ORDER BY salary
+      LIMIT 2) empl;
+```
+
+```postgresql
+SELECT *,
+       (SELECT avg(salary) FROM employee) - salary diff
+FROM employee;
+```
+
+```postgresql
+SELECT *
+FROM employee
+WHERE company_id IN (SELECT company.id FROM company WHERE date < '2005-02-02')
+```
+
+## Команда DELETE
+
+*Команда DELETE удаляет из указанной таблицы строки.*
+
+Пример использования команды DELETE:
+
+```postgresql
+DELETE
+FROM employee
+WHERE salary IN (SELECT min(salary) FROM employee);
+```
+
+При попытке удаления таблица, на которую ссылаются другие таблицы, мы получим ошибку
+
+![img_15.png](img_15.png)
+
+Для обхода ошибки необходимо удалить таблицу, которая ссылается на исходную.
+
+![img_16.png](img_16.png)
+
+### Ограничение проверки ON DELETE
+
+• **ON DELETE CASCADE** - во время удаления одной из таблиц, связанная таблица удаляется. <br/>
+• **SET DEFAULT** - указание значения по умолчания в случае удаления. <br/>
+• **SET NULL** - установление значения NULL в случае удаления.
+
+## Команда UPDATE
+
+*Команда UPDATE изменяет значения указанных столбцов во всех строках, удовлетворяющих условию. В предложении SET должны
+указываться только те столбцы, которые будут изменены.*
+
+Пример использования команды UPDATE:
+
+```postgresql
+UPDATE employee
+SET id = 3
+WHERE id = 10;
 ```
