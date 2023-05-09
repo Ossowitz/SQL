@@ -1,6 +1,6 @@
 # SQL
 
-![img.png](img.png)
+![img.png](src/photos/img.png)
 
 ## Базы данных
 
@@ -12,7 +12,7 @@
 
 *СУБД - это всего лишь приложение, способное манипулировать данными.*
 
-![img_1.png](img_1.png)
+![img_1.png](src/photos/img_1.png)
 
 **• Система управления базами данных. Например: MySQL, PostgreSQL, Oracle, MsSQL.** <br/>
 **• «Надстройка» над базами данных, организующая работу с БД и добавляющая дополнительную функциональность.** <br/>
@@ -21,7 +21,7 @@
 
 ## DDL & DML
 
-![img_2.png](img_2.png)
+![img_2.png](src/photos/img_2.png)
 
 ## Создание таблиц
 
@@ -105,14 +105,14 @@ CREATE TABLE company
 
 *Ограничение NOT NULL в PostgreSQL гарантирует, что столбец не может содержать никаких нулевых значений.*
 
-![img_3.png](img_3.png)
+![img_3.png](src/photos/img_3.png)
 
 ### UNIQUE
 
 *Ограничения уникальности гарантируют, что данные в определённом столбце или группе столбцов уникальны среди всех строк
 таблицы.*
 
-![img_4.png](img_4.png)
+![img_4.png](src/photos/img_4.png)
 
 При добавлении ограничения уникальности будет автоматически создан уникальный индекс B-дерева для столбца или группы
 столбцов, перечисленных в ограничении.
@@ -122,7 +122,7 @@ CREATE TABLE company
 *Ограничение-проверка - наиболее общий тип ограничений. В его определении вы можете указать, что значение данного
 столбца должно удовлетворять логическому выражению (проверке истинности).*
 
-![img_5.png](img_5.png)
+![img_5.png](src/photos/img_5.png)
 
 ### PRIMARY KEY
 
@@ -195,7 +195,7 @@ DISTINCT сохраняет одну строку для каждой групп
 
 Пример использования DISTINCT:
 
-![img_6.png](img_6.png)
+![img_6.png](src/photos/img_6.png)
 
 ## Ключевое слово WHERE
 
@@ -263,7 +263,7 @@ CREATE TABLE employee
 
 *Внешний ключ позволяет обезопасить работу с таблицами.*
 
-![img_10.png](img_10.png)
+![img_10.png](src/photos/img_10.png)
 
 ## Агрегатные и встроенные функции
 
@@ -276,7 +276,7 @@ SELECT sum(salary)
 FROM employee;
 ```
 
-![img_7.png](img_7.png)
+![img_7.png](src/photos/img_7.png)
 
 *2) Также присутствуют функции avg() - для нахождения среднего значения, max() - для нахождения максимального значения,
 min() - для нахождения минимального.*
@@ -295,7 +295,7 @@ SELECT upper(first_name) AS upperName,
 FROM employee;
 ```
 
-![img_8.png](img_8.png)
+![img_8.png](src/photos/img_8.png)
 
 *5) Функция **concat()** используется для конкатенации строк.*
 
@@ -304,7 +304,7 @@ SELECT concat(first_name, ' ', last_name) AS concat
 FROM employee
 ```
 
-![img_9.png](img_9.png)
+![img_9.png](src/photos/img_9.png)
 
 ### Примечание:
 
@@ -334,7 +334,7 @@ FROM employee
 WHERE company_id IS NOT NULL
 ```
 
-![img_11.png](img_11.png)
+![img_11.png](src/photos/img_11.png)
 
 *Второе множество:*
 
@@ -344,7 +344,7 @@ FROM employee
 WHERE salary IS NULL
 ```
 
-![img_12.png](img_12.png)
+![img_12.png](src/photos/img_12.png)
 
 **Результат объединения UNION:**
 
@@ -358,7 +358,7 @@ FROM employee
 WHERE salary IS NULL
 ```
 
-![img_13.png](img_13.png)
+![img_13.png](src/photos/img_13.png)
 
 ## Объединение множеств. UNION ALL
 
@@ -380,7 +380,7 @@ WHERE salary IS NULL
 
 **Результат объединения UNION ALL:**
 
-![img_14.png](img_14.png)
+![img_14.png](src/photos/img_14.png)
 
 ## Подзапросы
 
@@ -422,11 +422,11 @@ WHERE salary IN (SELECT min(salary) FROM employee);
 
 При попытке удаления таблица, на которую ссылаются другие таблицы, мы получим ошибку
 
-![img_15.png](img_15.png)
+![img_15.png](src/photos/img_15.png)
 
 Для обхода ошибки необходимо удалить таблицу, которая ссылается на исходную.
 
-![img_16.png](img_16.png)
+![img_16.png](src/photos/img_16.png)
 
 ### Ограничение проверки ON DELETE
 
@@ -452,3 +452,7 @@ WHERE id = 10;
 
 *Предложение RETURNING указывает, что команда UPDATE должна вычислить и возвратить значения для каждой фактически
 изменённой строки.*
+
+Пример использования предложения RETURNING:
+
+![img_17.png](src/photos/img_17.png)
