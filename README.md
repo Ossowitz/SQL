@@ -443,6 +443,12 @@ WHERE salary IN (SELECT min(salary) FROM employee);
 
 ```postgresql
 UPDATE employee
-SET id = 3
+SET id     = 3,
+    salary = 1000
 WHERE id = 10;
 ```
+
+В случае отсутствия ключевого слова WHERE, изменения применяются ко всем полям таблицы.
+
+*Предложение RETURNING указывает, что команда UPDATE должна вычислить и возвратить значения для каждой фактически
+изменённой строки.*
