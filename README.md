@@ -877,3 +877,20 @@ HAVING count(p.user_id) > 3;
 ![img_57.png](img_57.png)
 
 ## Сущности в Hibernate
+
+### Сессия (Session)
+
+#### Объект для взаимодействия с Hibernate. Когда хотим что-то делать с БД через Hibernate - получаем сессию. Объект Session получаем из объекта SessionFactory (паттерн фабрика)
+
+```java
+SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+Session session = sessionFactory.getCurrentSession();
+```
+
+#### На объекте Session можно вызывать:
+
+##### • save
+##### • update
+##### • get
+##### • ...
