@@ -998,3 +998,12 @@ Session session = sessionFactory.getCurrentSession();
 ### Для выстраивания отношений между сущностями, в Hibernate существуют аннотации @OneToMany, @ManyToOne и @JoinColumn
 
 ![img_69.png](img_69.png)
+
+## Жизненный цикл сущности в Hibernate
+
+**Java объекты-сущности проходят через несколько состояний, когда мы используем Hibernate**
+
+#### • Transient
+#### • Persistent (Managed)
+#### • Detached
+#### • Removed
