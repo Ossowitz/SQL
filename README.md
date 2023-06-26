@@ -1096,3 +1096,21 @@ void persist(Object var1);
 ## Ещё один способ построить связь «Один к одному»
 
 ![img_75.png](img_75.png)
+
+## Отношение Многие ко Многим в Hibernate
+
+![img_76.png](img_76.png)
+
+### Аннотации @ManyToMany и @JoinTable
+
+![img_77.png](img_77.png)
+
+• Могли поместить @JoinTable в сущность Movie, разницы нет<br/>
+• Нет как таковой *owning side*, так как ни одна из сущностей не владеет внешним ключом<br/>
+
+## Ленивая загрузка
+
+![img_78.png](img_78.png)
+
+![img_79.png](img_79.png)
+
