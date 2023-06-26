@@ -1137,3 +1137,21 @@ private List<Item> items;
 ##### @ManyToOne - Eager
 ##### @ManyToMany - Lazy
 ##### @OneToOne - Eager
+
+#### Аннотация @NamedQueries в Hibernate
+
+##### Позволяет определить несколько именованных запросов на языке HQL, которые могут быть использованы в коде приложения
+
+*Пример использования:*
+
+```java
+@Entity
+@Table(name = "users")
+@NamedQueries({
+        @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+        @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username=:username")
+})
+public class User {
+    // поля класса и другие аннотации
+}
+```
