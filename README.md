@@ -1114,3 +1114,26 @@ void persist(Object var1);
 
 ![img_79.png](img_79.png)
 
+### FetchType
+
+#### Связанные товары загружаются сразу
+
+```java
+@OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+private List<Item> items;
+```
+
+#### Связанные товары загружаются только по запросу (при вызове геттера, например)
+
+```java
+@OneToMany(mappedBy = "owner", fetcher = Fet)
+private List<Item> items;
+```
+
+#### FetchType по умолчанию
+*Когда мы явно не указываем*
+
+##### @OneToMany - Lazy
+##### @ManyToOne - Eager
+##### @ManyToMany - Lazy
+##### @OneToOne - Eager
