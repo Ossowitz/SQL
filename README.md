@@ -1155,3 +1155,13 @@ public class User {
     // поля класса и другие аннотации
 }
 ```
+
+# Spring Data JPA
+
+## Технологии работы с БД
+
+![img_80.png](img_80.png)
+
+*Spring Data JPA под капотом использует Hibernate, а Hibernate под капотом использует JDBC API*
+
+![img_81.png](img_81.png)
