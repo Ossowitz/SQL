@@ -1223,3 +1223,21 @@ public Persob show() {
         System.out.println(personProxy.getAge());
 }
 ```
+
+#### Когда полезен Load
+
+```java
+Session session = sessionFactory.getCurrentSession();
+
+// Создаём новый товар. Ему нужно назначить владельца.
+Item item = new Item("Some new item");
+
+// Нам нужен этот объект только для выстраивания связи с новым товаром
+// Значения полей этого человека не нужны, поэтому не будем делать лишний запрос к БД
+Person personProxy = session.load(Person.class, id);
+
+// В колонке внешнего ключа будет положен этот человек
+item.setOwner(personProxy);
+// То, что такой человек с таким id действительно существует, будет проверяться на стороне БД
+// Foreign Key constraint
+```
