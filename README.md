@@ -1188,3 +1188,38 @@ public class User {
 ### Кастомные запросы в Spring Data JPA
 
 ![img_83.png](img_83.png)
+
+## Разница между методом Get и методом Load
+
+### Метод Get
+
+*Делает запрос к БД и загружает сущность*
+
+```java
+@Transactional(readOnly = true)
+public void show(int id) {
+    Session session = sessionFactory.getCurrentSession();
+    
+    return session.get(Person.class, id);
+}
+```
+
+### Метод Load
+
+***Не делает** запрос к БД и возвращает Proxy-объект ("фейковый")*
+
+**Load - ленивый Get**
+
+```java
+@Transactional(readOnly = true)
+public Persob show() {
+        Session session = sessionFactory.getCurrentSession();
+        
+        Person personProxy = session.load(Person.class, id);
+        
+        System.out.println("После получения Proxy-объекта");
+        
+        
+        System.out.println(personProxy.getAge());
+}
+```
